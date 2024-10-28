@@ -1,0 +1,138 @@
+body,
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    position: relative;
+}
+
+.background {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom right, #8E8A86 0%, #302B26 100%);
+    position: relative;
+}
+
+.button-container,
+.button-container-right {
+    position: absolute;
+    top: 20px;
+    z-index: 10; /* Adicionado z-index para sobrepor elementos */
+}
+
+.button-container {
+    left: 20px;
+}
+
+.button-container-right {
+    right: 20px;
+}
+
+.button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 16px;
+    padding: 10px 15px;
+    margin-right: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: rgba(184, 179, 179, 0.712);
+}
+
+.carousel-container {
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden; 
+}
+
+.carousel-image {
+    width: 20%; 
+    height: 0;
+    padding-bottom: 20%; 
+    border: 2px dashed rgba(255, 255, 255, 0.5);
+    margin: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden; 
+}
+
+.carousel-image img {
+    max-width: 100%;
+    max-height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.file-upload {
+    display: none;
+}
+
+.custom-file-upload {
+    border: none;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 6px 12px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.custom-file-upload:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    font-size: 32px;
+    color: white;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.carousel-button:hover {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.next-button {
+    right: 20px;
+}
+
+.prev-button {
+    left: 20px;
+}
+
+.slick-slide {
+    background-color: transparent;
+    border: none;
+}
+
+.slick-list {
+    overflow: visible;
+}
+
+.logo {
+    position: absolute;
+    top: -4%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.logo img {
+    width: 250px;
+}

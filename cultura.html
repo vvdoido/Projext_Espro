@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gradiente de fundo</title>
+    <link rel="stylesheet" type="text/css" href="cultura.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+    <style>
+        .carousel-button {
+            position: absolute;
+            top: 50%;
+            font-size: 32px;
+            color: white;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .carousel-button:hover {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .next-button {
+            right: 20px;
+        }
+
+        .prev-button {
+            left: 20px;
+        }
+
+        .slick-slide {
+            background-color: transparent;
+            border: none;
+        }
+
+        .slick-list {
+            overflow: visible;
+        }
+
+        .carousel-container {
+            width: 90%; 
+            margin: auto;
+            overflow: hidden;
+            position: absolute;
+            bottom: 0%; 
+            left: 50%;
+            transform: translateX(-50%); 
+        }
+
+        .carousel-image {
+            width: 16.6%; 
+            height: 0;
+            padding-bottom: 4.2%;
+            border: 2px dashed rgba(255, 255, 255, 0.5);
+            margin: 10px;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .carousel-image img {
+            max-width: 85%;
+            max-height: 120%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .file-upload {
+            display: none;
+        }
+
+        .custom-file-upload {
+            border: none;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 6px 12px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .custom-file-upload:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background">
+        <div class="logo">
+            <img src="block.png" alt="Logo">
+        </div>
+        <div class="button-container">
+            <button class="button" onclick="window.location.href='index.html'">Home</button>
+            <button class="button" onclick="window.location.href='educacao.html'"> Educação</button>
+            <button class="button" onclick="window.location.href='esportes.html'">Esportes</button>
+        </div>
+        <div class="button-container-right"a>
+            <button class="button" onclick="window.location.href='cultura.html'">Cultura e Lazer</button>
+            <button class="button" onclick="window.location.href='ciencia.html'">Ciência e Tecnologia</button>
+        </div>
+        <div class="carousel-container">
+            <div class="carousel">
+                <div class="carousel-image">
+                    <img id="selected-image1" src="placeholder.png" alt="Imagem Selecionada">
+                    <input type="file" class="file-upload" id="fileInput1" onchange="previewFile(event, 1)">
+                    <label class="custom-file-upload" for="fileInput1">
+                        Selecionar Arquivo
+                    </label>
+                </div>
+                <div class="carousel-image">
+                    <img id="selected-image2" src="placeholder.png" alt="Imagem Selecionada">
+                    <input type="file" class="file-upload" id="fileInput2" onchange="previewFile(event, 2)">
+                    <label class="custom-file-upload" for="fileInput2">
+                        Selecionar Arquivo
+                    </label>
+                </div>
+                <div class="carousel-image">
+                    <img id="selected-image3" src="placeholder.png" alt="Imagem Selecionada">
+                    <input type="file" class="file-upload" id="fileInput3" onchange="previewFile(event, 3)">
+                    <label class="custom-file-upload" for="fileInput3">
+                        Selecionar Arquivo
+                    </label>
+                </div>
+                <div class="carousel-image">
+                    <img id="selected-image4" src="placeholder.png" alt="Imagem Selecionada">
+                    <input type="file" class="file-upload" id="fileInput4" onchange="previewFile(event, 4)">
+                    <label class="custom-file-upload" for="fileInput4">
+                        Selecionar Arquivo
+                    </label>
+                </div>
+                <div class="carousel-image">
+                    <img id="selected-image5" src="placeholder.png" alt="Imagem Selecionada">
+                    <input type="file" class="file-upload" id="fileInput5" onchange="previewFile(event, 5)">
+                    <label class="custom-file-upload" for="fileInput5">
+                        Selecionar Arquivo
+                    </label>
+                </div>
+                <div class="carousel-image">
+                    <img id="selected-image6" src="placeholder.png" alt="Imagem Selecionada">
+                    <input type="file" class="file-upload" id="fileInput6" onchange="previewFile(event, 6)">
+                    <label class="custom-file-upload" for="fileInput6">
+                        Selecionar Arquivo
+                    </label>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-button next-button" onclick="nextSlide()">›</button>
+        <button class="carousel-button prev-button" onclick="prevSlide()">‹</button>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.carousel').slick({
+                dots: true,
+                infinite: true,
+                speed: 500,
+                slidesToShow: 1,
+                adaptiveHeight: true,
+                vertical: false,
+                centerMode: true,
+                centerPadding: '0',
+                arrows: false,
+                autoplay: true,
+                autoplaySpeed: 5000
+            });
+        });
+
+        function previewFile(event, index) {
+            var fileInput = document.getElementById('fileInput' + index);
+            var selectedImage = document.getElementById('selected-image' + index);
+            var file = event.target.files[0];
+            var reader = new FileReader();
+
+            reader.onloadend = function() {
+                selectedImage.src = reader.result;
+            };
+
+            if (file) {
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function nextSlide() {
+            $('.carousel').slick('slickNext');
+        }
+
+        function prevSlide() {
+            $('.carousel').slick('slickPrev');
+        }
+    </script>
+</body>
+
+</html>
